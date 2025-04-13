@@ -1,7 +1,7 @@
 from openai import OpenAI  # or use Azure, Cohere, etc.
-
+import streamlit as st
 client = OpenAI(
-    api_key="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")
+    api_key=st.secrets["OPENAI_API_KEY"])
 
 
 def clean_xml(received_string):
