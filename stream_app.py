@@ -79,7 +79,9 @@ if st.session_state.pdf_shown and os.path.exists(st.session_state.pdf_shown):
             if os.path.exists(NEW_PDF):
                 #st.session_state.pdf_shown = NEW_PDF
                 #st.success("Updated PDF displayed.")
-                st.download_button("Download Updated PDF", pdf_str1, file_name="new.pdf", mime="application/pdf")
+                with open(st.session_state.pdf_shown, "rb") as f:
+                    pdf_data1 = f.read()
+                st.download_button("Download Updated PDF", pdf_data1, file_name="new.pdf", mime="application/pdf")
                 st.experimental_rerun()
             else:
                 st.error("Updated PDF (new.pdf) not found.")
