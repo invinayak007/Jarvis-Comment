@@ -47,7 +47,7 @@ if st.session_state.pdf_shown and os.path.exists(st.session_state.pdf_shown):
 
     b64 = base64.b64encode(pdf_data).decode()
     st.markdown(
-        f'<iframe src="data:application/pdf;base64,{b64}" width="1000" height="800"></iframe>',
+        f'<iframe src="data:application/pdf;base64,{b64}" width="1000" height="800" type="application/pdf"></iframe>',
         unsafe_allow_html=True
     )
 
