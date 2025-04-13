@@ -1,0 +1,5 @@
+openai
+json
+fitz
+subprocess
+xml.etree.ElementTree
