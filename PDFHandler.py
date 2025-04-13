@@ -4,16 +4,10 @@ import os
 import fitz
 
 def write_to_pdf(pdf_str, file, use_pdfcrowd=False):
-    if use_pdfcrowd:
-        client = pdfcrowd.HtmlToPdfClient('invin67', 'ddf198f1e5f10696b1fc9331bc91b60b')
+    client = pdfcrowd.HtmlToPdfClient('invinayak', 'c6d353864a8c5c6888cb4d7ea772a8e5')
         # run the conversion and write the result to a file
-        client.setEnablePdfForms(True)
-        client.convertStringToFile(pdf_str,file)
-    else:
-        with open('tmp_tmp.html', "w") as f:
-            f.write(pdf_str)
-        subprocess.call(['wkhtmltopdf', 'tmp_tmp.html', file])
-        os.remove('tmp_tmp.html')
+    client.setEnablePdfForms(True)
+    client.convertStringToFile(pdf_str,file)
 
 
 def split_pdf(input_path, output_prefix, page_numbers):
