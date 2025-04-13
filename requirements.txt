@@ -1,5 +1,5 @@
 openai==1.44.1
-json
+json==3.13.3
 fitz
 subprocess
 xml.etree.ElementTree
