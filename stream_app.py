@@ -53,7 +53,7 @@ if st.session_state.pdf_shown and os.path.exists(st.session_state.pdf_shown):
     except Exception as e:
     '''
     st.error(f"Could not display PDF inline.")
-    st.download_button("Download PDF", pdf_data, file_name="test.pdf", mime="application/pdf")
+    st.download_button("Download PDF", pdf_data, file_name="original.pdf", mime="application/pdf")
 
     # 4. Comment section
     comment = st.text_area("💬 Add your comment")
