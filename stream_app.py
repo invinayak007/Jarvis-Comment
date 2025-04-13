@@ -41,9 +41,9 @@ if xml_file:
 # 3. Display PDF (test.pdf or new.pdf)
 if st.session_state.pdf_shown and os.path.exists(st.session_state.pdf_shown):
     st.subheader("📄 PDF Preview")
-    '''
     with open(st.session_state.pdf_shown, "rb") as f:
         pdf_data = f.read()
+    '''
     try:
         b64 = base64.b64encode(pdf_data).decode()
         st.markdown(
