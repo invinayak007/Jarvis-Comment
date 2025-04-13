@@ -5,8 +5,8 @@ import XMLHandler
 import PDFHandler
 import openai_impl
 # File paths
-TEST_PDF = "test.pdf"
-NEW_PDF = "new.pdf"
+TEST_PDF = "original.pdf"
+NEW_PDF = "updated.pdf"
 xml_content = ''
 st.title("📄 XML to PDF Viewer & Comments")
 
@@ -35,7 +35,7 @@ if xml_file:
         # 🔧 You generate 'test.pdf' from xml_content
         json_content = XMLHandler.xml_to_json(xml_content)
         pdf_str = XMLHandler.json_to_pdf_string(json_content, [])
-        PDFHandler.write_to_pdf(pdf_str, 'test.pdf', False)
+        PDFHandler.write_to_pdf(pdf_str, 'original.pdf', False)
         st.session_state.pdf_shown = TEST_PDF
 
 # 3. Display PDF (test.pdf or new.pdf)
@@ -75,13 +75,13 @@ if st.session_state.pdf_shown and os.path.exists(st.session_state.pdf_shown):
             new_cont = XMLHandler.get_xml_content(xml_file.name)
             json_content1 = XMLHandler.xml_to_json(new_cont)
             pdf_str1 = XMLHandler.json_to_pdf_string(json_content1, [])
-            PDFHandler.write_to_pdf(pdf_str1, 'new.pdf', False)
+            PDFHandler.write_to_pdf(pdf_str1, 'updated.pdf', False)
             if os.path.exists(NEW_PDF):
                 #st.session_state.pdf_shown = NEW_PDF
                 #st.success("Updated PDF displayed.")
                 with open(st.session_state.pdf_shown, "rb") as f:
                     pdf_data1 = f.read()
-                st.download_button("Download Updated PDF", pdf_data1, file_name="new.pdf", mime="application/pdf")
+                st.download_button("Download Updated PDF", pdf_data1, file_name="updated.pdf", mime="application/pdf")
                 st.experimental_rerun()
             else:
-                st.error("Updated PDF (new.pdf) not found.")
+                st.error("Updated PDF (updated.pdf) not found.")
