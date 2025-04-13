@@ -1,3 +1,2 @@
 openai==1.44.1
 fitz
-xml.etree.ElementTree
