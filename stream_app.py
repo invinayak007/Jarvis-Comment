@@ -44,12 +44,15 @@ if st.session_state.pdf_shown and os.path.exists(st.session_state.pdf_shown):
 
     with open(st.session_state.pdf_shown, "rb") as f:
         pdf_data = f.read()
-
-    b64 = base64.b64encode(pdf_data).decode()
-    st.markdown(
-        f'<iframe src="data:application/pdf;base64,{b64}" width="1000" height="800" type="application/pdf"></iframe>',
-        unsafe_allow_html=True
-    )
+    try:
+        b64 = base64.b64encode(pdf_data).decode()
+        st.markdown(
+            f'<iframe src="data:application/pdf;base64,{b64}" width="1000" height="800" type="application/pdf"></iframe>',
+            unsafe_allow_html=True
+        )
+    except Exception as e:
+        st.error(f"Could not display PDF inline. Error: {e}")
+        st.download_button("Download PDF", pdf_data, file_name="test.pdf", mime="application/pdf")
 
     # 4. Comment section
     comment = st.text_area("💬 Add your comment")
