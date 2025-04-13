@@ -41,7 +41,7 @@ if xml_file:
 # 3. Display PDF (test.pdf or new.pdf)
 if st.session_state.pdf_shown and os.path.exists(st.session_state.pdf_shown):
     st.subheader("📄 PDF Preview")
-
+    '''
     with open(st.session_state.pdf_shown, "rb") as f:
         pdf_data = f.read()
     try:
@@ -51,8 +51,9 @@ if st.session_state.pdf_shown and os.path.exists(st.session_state.pdf_shown):
             unsafe_allow_html=True
         )
     except Exception as e:
-        st.error(f"Could not display PDF inline. Error: {e}")
-        st.download_button("Download PDF", pdf_data, file_name="test.pdf", mime="application/pdf")
+    '''
+    st.error(f"Could not display PDF inline. Error: {e}")
+    st.download_button("Download PDF", pdf_data, file_name="test.pdf", mime="application/pdf")
 
     # 4. Comment section
     comment = st.text_area("💬 Add your comment")
