@@ -77,8 +77,9 @@ if st.session_state.pdf_shown and os.path.exists(st.session_state.pdf_shown):
             pdf_str1 = XMLHandler.json_to_pdf_string(json_content1, [])
             PDFHandler.write_to_pdf(pdf_str1, 'new.pdf', False)
             if os.path.exists(NEW_PDF):
-                st.session_state.pdf_shown = NEW_PDF
-                st.success("Updated PDF displayed.")
+                #st.session_state.pdf_shown = NEW_PDF
+                #st.success("Updated PDF displayed.")
+                st.download_button("Download Updated PDF", pdf_str1, file_name="new.pdf", mime="application/pdf")
                 st.experimental_rerun()
             else:
                 st.error("Updated PDF (new.pdf) not found.")
